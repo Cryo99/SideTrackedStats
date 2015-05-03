@@ -5,8 +5,8 @@
 // @copyright   2015, Cryo99
 // @attribution SideTracked stats provided by Chris AKA Bus.Stop (http://www.sidetrackedseries.info/)
 // @attribution Icon image extracted from the SideTracked banner by Chris AKA Bus.Stop
-// @icon        https://github.com/Cryo99/SideTrackedStats/master/SideTrackedStats/icon48.png
-// @icon64      https://github.com/Cryo99/SideTrackedStats/master/SideTrackedStats/icon64.png
+// @icon        https://raw.githubusercontent.com/Cryo99/SideTrackedStats/master/icon48.png
+// @icon64      https://raw.githubusercontent.com/Cryo99/SideTrackedStats/master/icon64.png
 // @include     /^https?://www\.geocaching\.com/(my|default|geocache|profile|seek/cache_details)/
 // @exclude     /^https?://www\.geocaching\.com/(login|about|articles|myfriends)/
 // @version     0.0.1
