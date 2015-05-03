@@ -1,6 +1,7 @@
 // ==UserScript==
 // @name        SideTrackedStats
 // @namespace   http://www.cryotest.com/
+// @description Adds your SideTracked stats badge onto your profile page and SideTracked cache pages on geocaching.com.
 // @license     GPL version 3 or any later version; http://www.gnu.org/copyleft/gpl.html
 // @copyright   2015, Cryo99
 // @attribution SideTracked stats provided by Chris AKA Bus.Stop (http://www.sidetrackedseries.info/)
