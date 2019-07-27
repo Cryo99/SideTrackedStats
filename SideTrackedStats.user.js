@@ -3,14 +3,14 @@
 // @namespace   http://www.cryotest.com/
 // @description Adds your SideTracked stats badge onto your profile page and SideTracked cache pages on geocaching.com.
 // @license     GPL version 3 or any later version; http://www.gnu.org/copyleft/gpl.html
-// @copyright   2015-2018, Cryo99
+// @copyright   2015-2019, Cryo99
 // @attribution SideTracked stats provided by Chris AKA Bus.Stop (http://www.sidetrackedseries.info/)
 // @attribution Icon image extracted from the SideTracked banner by Chris AKA Bus.Stop
 // @icon        https://raw.githubusercontent.com/Cryo99/SideTrackedStats/master/icon48.png
 // @icon64      https://raw.githubusercontent.com/Cryo99/SideTrackedStats/master/icon64.png
 // @include     /^https?://www\.geocaching\.com/(account|my|default|geocache|profile|seek/cache_details|p)/
 // @exclude     /^https?://www\.geocaching\.com/(login|about|articles|myfriends)/
-// @version     0.1.0
+// @version     0.1.1
 // @supportURL	https://github.com/Cryo99/SideTrackedStats
 // @grant       GM_xmlhttpRequest
 // ==/UserScript==
@@ -33,7 +33,7 @@
 
 	function displayStats(stats, page){
 		function getHtml(uname, level, award, finds){
-			return "<a class='sts-badge' href='http://www.sidetrackedseries.info' title='SideTracked stats.'><img src='http://img.sidetrackedseries.info/awards/st_F_award.php?name=" + uname + "&brand=jobs' /></a>";
+			return "<a class='sts-badge' href='https://www.sidetrackedseries.info' title='SideTracked stats.'><img src='https://img.sidetrackedseries.info/awards/st_F_award.php?name=" + uname + "&brand=jobs' /></a>";
 		}
 		var stsWidget = document.createElement("div"),
 			html = "",
@@ -61,9 +61,13 @@
                 target = document.getElementsByClassName('sidebar')[0];
                 break;
 			case "profile":
-				target = document.getElementById("ctl00_ContentBody_ProfilePanel1_lblProfile");
-				if(target){
-					target = target.parentNode;
+				if(profileName){
+					target = document.getElementById("ctl00_ContentBody_ProfilePanel1_lblProfile");
+					if (target) {
+						target = target.parentNode;
+					}
+				}else if(profileNameOld){
+					target = document.getElementById("HiddenProfileContent");
 				}
 				break;
 		}
@@ -177,5 +181,5 @@
 		stsCSS.appendChild(document.createTextNode(css));
 	}
 	document.head.appendChild(stsCSS);
-	displayStats(stats.reverse(), currentPage);
+	displayStats(stats, currentPage);
 }());
