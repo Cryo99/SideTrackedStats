@@ -18,6 +18,10 @@ __Update:__ This should no longer be true in the new UI.
 
 ## Version History
 
+### Version 0.1.2
+
+* Prevented the widget from appearing on the user dashboard page.
+
 ### Version 0.1.1
 
 * Fixed the new account page not displaying the widget.

@@ -9,8 +9,8 @@
 // @icon        https://raw.githubusercontent.com/Cryo99/SideTrackedStats/master/icon48.png
 // @icon64      https://raw.githubusercontent.com/Cryo99/SideTrackedStats/master/icon64.png
 // @include     /^https?://www\.geocaching\.com/(account|my|default|geocache|profile|seek/cache_details|p)/
-// @exclude     /^https?://www\.geocaching\.com/(login|about|articles|myfriends)/
-// @version     0.1.1
+// @exclude     /^https?://www\.geocaching\.com/(login|about|articles|myfriends|account/dashboard)/
+// @version     0.1.2
 // @supportURL	https://github.com/Cryo99/SideTrackedStats
 // @grant       GM_xmlhttpRequest
 // ==/UserScript==
