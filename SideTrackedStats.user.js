@@ -12,7 +12,7 @@
 // @exclude     /^https?://www\.geocaching\.com/(login|about|articles|myfriends|account/*)/
 // @version     0.2.0
 // @supportURL	https://github.com/Cryo99/SideTrackedStats
-// @require     https://raw.githubusercontent.com/sizzlemctwizzle/GM_config/master/gm_config.js
+// @require     https://openuserjs.org/src/libs/sizzle/GM_config.js
 // @grant       GM_xmlhttpRequest
 // @grant       GM_registerMenuCommand
 // @grant       GM_setValue
