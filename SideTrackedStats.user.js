@@ -9,10 +9,14 @@
 // @icon        https://raw.githubusercontent.com/Cryo99/SideTrackedStats/master/icon48.png
 // @icon64      https://raw.githubusercontent.com/Cryo99/SideTrackedStats/master/icon64.png
 // @include     /^https?://www\.geocaching\.com/(account|my|default|geocache|profile|seek/cache_details|p)/
-// @exclude     /^https?://www\.geocaching\.com/(login|about|articles|myfriends|account/dashboard)/
-// @version     0.1.2
+// @exclude     /^https?://www\.geocaching\.com/(login|about|articles|myfriends|account/*)/
+// @version     0.2.0
 // @supportURL	https://github.com/Cryo99/SideTrackedStats
+// @require     https://raw.githubusercontent.com/sizzlemctwizzle/GM_config/master/gm_config.js
 // @grant       GM_xmlhttpRequest
+// @grant       GM_registerMenuCommand
+// @grant       GM_setValue
+// @grant       GM_getValue
 // ==/UserScript==
 
 
@@ -31,9 +35,9 @@
 		userNames = [],
 		stats = [];
 
-	function displayStats(stats, page){
-		function getHtml(uname, level, award, finds){
-			return "<a class='sts-badge' href='https://www.sidetrackedseries.info' title='SideTracked stats.'><img src='https://img.sidetrackedseries.info/awards/st_F_award.php?name=" + uname + "&brand=jobs' /></a>";
+	function displayStats(stats, page, brand){
+		function getHtml(uname, brand){
+			return "<a class='sts-badge' href='https://www.sidetrackedseries.info' title='SideTracked stats.'><img src='https://img.sidetrackedseries.info/awards/st_F_award.php?name=" + uname + "&brand=" + brand + "' /></a>";
 		}
 		var stsWidget = document.createElement("div"),
 			html = "",
@@ -46,7 +50,7 @@
 				.replace(/'/g, "&apos;")
 				.replace(/"/g, "&quot;");
 			if(i === 0 || stats[i].name !== stats[0].name){
-				html += getHtml(name);
+				html += getHtml(name, brand);
 			}
 		}
 
@@ -119,6 +123,50 @@
 				.join());
 	}
 
+
+	//// EXECUTION STARTS HERE
+	console.info("SideTracked Stats V" + GM_info.script.version);
+
+    //******* Configuration dialogue *******
+	// Register the menu item.
+	GM_registerMenuCommand("Options", function(){
+		GM_config.open();
+	}, 'S');
+
+	GM_config.init({
+		'id': 'sts_config', // The id used for this instance of GM_config
+		'title': 'SideTracked Stats', // Panel Title
+		'fields': { // Fields object
+			'sts_branding': { // This is the id of the field
+				'label': 'Branding', // Appears next to field
+				'type': 'select', // Makes this setting a dropdown
+				'options': ['Awards', 'Levels', 'Jobs', 'None'], // Possible choices
+				'default': 'Jobs' // Default value if user doesn't change it
+			}
+		},
+		// Dialogue internal styles.
+		'css': '#sts_config {position: static !important; width: 75% !important; margin: 1.5em auto !important; border: 10 !important;} #sts_config_sts_branding_var {padding-top: 30px;}',
+		'events': {
+			'open': function(document, window, frame){
+				// iframe styles.
+				frame.style.width = '300px';
+				frame.style.height = '250px';
+				frame.style.left = parent.document.body.clientWidth / 2 - 150 + 'px';
+				frame.style.borderWidth = '5px';
+				frame.style.borderStyle = 'ridge';
+				frame.style.borderColor = '#999999';
+			},
+			'save': function(){
+				GM_setValue('sts_branding', GM_config.get('sts_branding'));
+				location.reload();                              // reload the page when configuration was changed
+			}
+		}
+	});
+
+	var brand = GM_getValue('sts_branding', 'jobs').toLowerCase();
+	console.info("SideTracked Stats branding: " + brand);
+    //**************************************
+
 	// Don't run on frames or iframes
 	if(window.top !== window.self){
 		return false;
@@ -181,5 +229,5 @@
 		stsCSS.appendChild(document.createTextNode(css));
 	}
 	document.head.appendChild(stsCSS);
-	displayStats(stats, currentPage);
+	displayStats(stats, currentPage, brand);
 }());

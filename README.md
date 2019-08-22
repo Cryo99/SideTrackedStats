@@ -18,6 +18,14 @@ __Update:__ This should no longer be true in the new UI.
 
 ## Version History
 
+### Version 0.2.0
+
+* Added a configuration dialogue which allows you to select the brand displayed on the banner.
+
+### Version 0.1.3
+
+* Prevented the widget from appearing on all account pages.
+
 ### Version 0.1.2
 
 * Prevented the widget from appearing on the user dashboard page.
