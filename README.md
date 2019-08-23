@@ -10,7 +10,7 @@ A userscript that shows SideTracked cache stats on geocaching.com. It adds the [
 
 On cache pages it adds the C. O.'s banner as well.
 
-## Credite
+## Credits
 
 This script was inspired by, and is based on, James Inge's [Church Micro Stats](https://greasyfork.org/en/scripts/9641-church-micro-stats) and works in concert with it, as you can see from the screen shots. Thanks and credit should go to James for his efforts.
 
