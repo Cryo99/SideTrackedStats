@@ -1,4 +1,4 @@
-# SideTrackedStats
+# SideTracked Stats
 
 A userscript that shows SideTracked cache stats on geocaching.com. It adds the [SideTracked](https://www.sidetrackedseries.info/) banner in the following places:
 
