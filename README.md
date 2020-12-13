@@ -22,6 +22,10 @@ __Update:__ This should no longer be true in the new UI.
 
 ## Version History
 
+### Version 1.0.1
+
+* Bumped GCStatsBannerLib version.
+
 ### Version 1.0.0
 
 * Rewritten to use [GCStatsBannerLib](https://greasyfork.org/en/scripts/389508-gc-stats-banner-library).
